@@ -9,6 +9,27 @@ const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 let oldInputValue;
 
 //Funções
+
+// Uso da biblioteca Toastify para exibir mensagens de notificação, seguindo as cores do projeto
+const showToast = (message, type = 'success') => {
+  const colors = {
+    success: '#395169',
+    info: '#102f5e',
+    error: '#d32f2f'
+  };
+  
+  Toastify({
+    text: message,
+    duration: 3000,
+    gravity: "top",
+    position: "right",
+    style: {
+      background: colors[type],
+      borderRadius: "7px"
+    }
+  }).showToast();
+};
+
 const saveTodo = (text) => {
   const todo = document.createElement("div");
   todo.classList.add("todo");
@@ -36,6 +57,9 @@ const saveTodo = (text) => {
 
   todoInput.value = "";
   todoInput.focus();
+  
+  // chama a função de toast na hora certa
+  showToast("Tarefa adicionada com sucesso!", "success");
 };
 
 const toggleForms = () => {
@@ -53,6 +77,9 @@ const updateTodo = (text) => {
       todoTitle.innerText = text;
     }
   });
+  
+  // chama a função de toast na hora certa
+  showToast("Tarefa editada com sucesso!", "info");
 };
 
 //Eventos
@@ -77,10 +104,15 @@ document.addEventListener("click", (e) => {
 
   if (targetEl.classList.contains("finish-todo")) {
     parentEl.classList.toggle("done");
+    const isDone = parentEl.classList.contains("done");
+    // chama a função de toast na hora certa
+    showToast(isDone ? "Tarefa concluída!" : "Tarefa reaberta!", "success");
   }
 
   if (targetEl.classList.contains("remove-todo")) {
     parentEl.remove();
+    // chama a função de toast na hora certa
+    showToast("Tarefa removida!", "error");
   }
 
   if (targetEl.classList.contains("edit-todo")) {
