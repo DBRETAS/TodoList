@@ -8,7 +8,7 @@ Este é um projeto simples e funcional de **Lista de Tarefas (To-Do List)** dese
 - ✏️ Editar tarefas existentes
 - 🗑️ Remover tarefas
 - ✔️ Marcar tarefas como concluídas
-- 🔍 Pesquisar tarefas por texto (⏳ loading...)
+- 🔍 Pesquisar tarefas por texto
 - 📂 Filtrar por: todas | feitas | a fazer (⏳ loading...)
 - 💾 Interface responsiva e estilizada com Phosphor Icons
 

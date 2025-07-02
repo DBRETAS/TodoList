@@ -5,19 +5,21 @@ const todoList = document.querySelector("#todo-list");
 const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
+const searchInput = document.querySelector("#search-input");
+const eraseButton = document.querySelector("#erase-button");
 
 let oldInputValue;
 
 //Funções
 
 // Uso da biblioteca Toastify para exibir mensagens de notificação, seguindo as cores do projeto
-const showToast = (message, type = 'success') => {
+const showToast = (message, type = "success") => {
   const colors = {
-    success: '#395169',
-    info: '#102f5e',
-    error: '#d32f2f'
+    success: "#1cb641",
+    info: "#b837d6",
+    error: "#d32f2f",
   };
-  
+
   Toastify({
     text: message,
     duration: 3000,
@@ -25,11 +27,12 @@ const showToast = (message, type = 'success') => {
     position: "right",
     style: {
       background: colors[type],
-      borderRadius: "7px"
-    }
+      borderRadius: "7px",
+    },
   }).showToast();
 };
 
+//Função que cria e adiciona as tarefas digitadas pelo usuario
 const saveTodo = (text) => {
   const todo = document.createElement("div");
   todo.classList.add("todo");
@@ -57,17 +60,19 @@ const saveTodo = (text) => {
 
   todoInput.value = "";
   todoInput.focus();
-  
+
   // chama a função de toast na hora certa
   showToast("Tarefa adicionada com sucesso!", "success");
 };
 
+//Função que esconde editForm, todoForm, todoList com CSS.
 const toggleForms = () => {
   editForm.classList.toggle("hide");
   todoform.classList.toggle("hide");
   todoList.classList.toggle("hide");
 };
 
+//Função que trata o input de edição da tarefa.
 const updateTodo = (text) => {
   const todos = document.querySelectorAll(".todo");
 
@@ -77,12 +82,33 @@ const updateTodo = (text) => {
       todoTitle.innerText = text;
     }
   });
-  
-  // chama a função de toast na hora certa
+
+  // chama a função de toast na hora certa.
   showToast("Tarefa editada com sucesso!", "info");
 };
 
+//Função que pesquisa todas as tarefas.
+const pesquisar = () => {
+  const searchValue = searchInput.value;
+  const todasTarefas = document.querySelectorAll(".todo");
+
+  todasTarefas.forEach((todas) => {
+    let title = todas.querySelector("h3");
+    if (
+      title.innerText
+        .toLocaleLowerCase()
+        .includes(searchValue.toLocaleLowerCase())
+    ) {
+      todas.classList.remove("hide-task");
+    } else {
+      todas.classList.add("hide-task");
+    }
+  });
+};
+
 //Eventos
+
+//Dispara o evento de criação de tarefas.
 todoform.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -93,6 +119,7 @@ todoform.addEventListener("submit", (e) => {
   }
 });
 
+//Dispara o evento dos botoes de cada tarefa.
 document.addEventListener("click", (e) => {
   const targetEl = e.target;
   const parentEl = targetEl.closest("div");
@@ -105,13 +132,13 @@ document.addEventListener("click", (e) => {
   if (targetEl.classList.contains("finish-todo")) {
     parentEl.classList.toggle("done");
     const isDone = parentEl.classList.contains("done");
-    // chama a função de toast na hora certa
+    // chama a função de toast na hora certa.
     showToast(isDone ? "Tarefa concluída!" : "Tarefa reaberta!", "success");
   }
 
   if (targetEl.classList.contains("remove-todo")) {
     parentEl.remove();
-    // chama a função de toast na hora certa
+    // chama a função de toast na hora certa.
     showToast("Tarefa removida!", "error");
   }
 
@@ -123,11 +150,13 @@ document.addEventListener("click", (e) => {
   }
 });
 
+//Evento do botão de cancelar edição.
 cancelEditBtn.addEventListener("click", (e) => {
   e.preventDefault();
   toggleForms();
 });
 
+//Evento que pega o input de edição do usuario e trata com as funções updateTodo() e toggleForms()
 editForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -138,4 +167,16 @@ editForm.addEventListener("submit", (e) => {
   }
 
   toggleForms();
+});
+
+//Evento de pesquisa.
+searchInput.addEventListener("input", (e) => {
+  pesquisar();
+});
+
+//Dispara o evento que apaga o texto e pesquisa novamente, mostrando todas as tarefas.
+eraseButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  searchInput.value = "";
+  pesquisar();
 });

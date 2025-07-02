@@ -1,4 +1,4 @@
-*:not(h1){
+*:not(h1) {
   margin: 0;
   padding: 0;
   font-family:
@@ -23,17 +23,17 @@ body {
   background-position: center;
   background-size: cover;
 }
-.todo-container{
-   box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.4);
+.todo-container {
+  box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.4);
 }
 
-header > h1{
-  display:flex;
+header > h1 {
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-i{
+i {
   font-size: 1.3rem;
 }
 
@@ -133,49 +133,53 @@ select {
   flex-direction: column;
 }
 
-#search form{
-    display: flex;
+#search form {
+  display: flex;
 }
 
-#search input{
-    width: 100%;
-    margin-right: 0.4rem;
+#search input {
+  width: 100%;
+  margin-right: 0.4rem;
 }
 
-#filter{
-    width: 35%;
-    display: flex;
-    flex-direction: column;
+#filter {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
 }
 
-#filter select{
-    flex: 1;
+#filter select {
+  flex: 1;
 }
 
-.todo{
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
-    border-bottom:1px solid #ddd;
-    transition: .3s;
+.todo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  transition: 0.3s;
 }
 
-.todo h3{
-    flex: 1;
-    font-size: 0.9rem;
+.todo h3 {
+  flex: 1;
+  font-size: 0.9rem;
 }
 
-.todo button{
-    margin-left: .4rem;
+.todo button {
+  margin-left: 0.4rem;
 }
 
 .done {
-    background-color: #395169;
-    border-radius: 0.4rem;
+  background-color: #395169;
+  border-radius: 0.4rem;
 }
-.done h3{
-    color: #fff;
-    text-decoration: line-through 2.8px solid;
-    font-style: italic;
+.done h3 {
+  color: #fff;
+  text-decoration: line-through 2.8px solid;
+  font-style: italic;
+}
+
+.hide-task {
+  display: none;
 }
