@@ -7,6 +7,7 @@ const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 const searchInput = document.querySelector("#search-input");
 const eraseButton = document.querySelector("#erase-button");
+const filterSelect = document.querySelector("#filter-select");
 
 let oldInputValue;
 
@@ -87,6 +88,32 @@ const updateTodo = (text) => {
   showToast("Tarefa editada com sucesso!", "info");
 };
 
+//Função que filtra as tarefas 
+const filter = () => {
+  const filterValue = filterSelect.value;
+  const tasks = document.querySelectorAll(".todo");
+
+  tasks.forEach((task) => {
+    if (filterValue === "done") {
+      if (task.classList.contains("done")) {
+        task.classList.remove("hide-task");
+      } else {
+        task.classList.add("hide-task");
+      }
+    }
+    if (filterValue === "all") {
+      task.classList.remove("hide-task");
+    }
+    if (filterValue === "todo") {
+      if (!task.classList.contains("done")) {
+        task.classList.remove("hide-task");
+      } else {
+        task.classList.add("hide-task");
+      }
+    }
+  });
+};
+
 //Função que pesquisa todas as tarefas.
 const pesquisar = () => {
   const searchValue = searchInput.value;
@@ -117,6 +144,11 @@ todoform.addEventListener("submit", (e) => {
   if (inputValue) {
     saveTodo(inputValue);
   }
+});
+
+//Dispara o evento de filtragem das tarefas
+filterSelect.addEventListener("change", () => {
+  filter();
 });
 
 //Dispara o evento dos botoes de cada tarefa.
