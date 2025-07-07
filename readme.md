@@ -6,11 +6,12 @@ Este é um projeto simples e funcional de **Lista de Tarefas (To-Do List)** dese
 
 - ✅ Adicionar novas tarefas
 - ✏️ Editar tarefas existentes
-- 🗑️ Remover tarefas
+- 🗑️ Remover tarefas  
 - ✔️ Marcar tarefas como concluídas
 - 🔍 Pesquisar tarefas por texto
-- 📂 Filtrar por: todas | feitas | a fazer (⏳ loading...)
+- 📂 Filtrar por: todas | feitas | a fazer 
 - 💾 Interface responsiva e estilizada com Phosphor Icons
+- 🗃️ Salvar no localStorage (⏳ loading...)
 
 ## 📁 Estrutura do Projeto
 
