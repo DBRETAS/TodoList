@@ -181,5 +181,9 @@ select {
 }
 
 .hide-task {
+  display: none;
+}
+
+.hide-toolbar{
   display: none !important;
 }
