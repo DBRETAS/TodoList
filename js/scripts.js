@@ -72,6 +72,7 @@ const toggleForms = () => {
   editForm.classList.toggle("hide");
   todoform.classList.toggle("hide");
   todoList.classList.toggle("hide");
+  removeHideToolBar();
 };
 
 //Função que trata o input de edição da tarefa.
@@ -134,9 +135,15 @@ const pesquisar = () => {
   });
 };
 
+//função que adiciona a classe
 const hideToolBar = () => {
-  toolBar.classList.add("hide-task");
+  toolBar.classList.add("hide-toolbar");
 };
+
+//função que remove a classe 
+const removeHideToolBar = ()  =>{
+  toolBar.classList.remove("hide-toolbar");
+}
 
 //Eventos
 
