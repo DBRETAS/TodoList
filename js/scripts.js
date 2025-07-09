@@ -8,6 +8,7 @@ const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 const searchInput = document.querySelector("#search-input");
 const eraseButton = document.querySelector("#erase-button");
 const filterSelect = document.querySelector("#filter-select");
+const toolBar = document.querySelector("#toolbar");
 
 let oldInputValue;
 
@@ -88,7 +89,7 @@ const updateTodo = (text) => {
   showToast("Tarefa editada com sucesso!", "info");
 };
 
-//Função que filtra as tarefas 
+//Função que filtra as tarefas
 const filter = () => {
   const filterValue = filterSelect.value;
   const tasks = document.querySelectorAll(".todo");
@@ -131,6 +132,10 @@ const pesquisar = () => {
       todas.classList.add("hide-task");
     }
   });
+};
+
+const hideToolBar = () => {
+  toolBar.classList.add("hide-task");
 };
 
 //Eventos
@@ -176,7 +181,7 @@ document.addEventListener("click", (e) => {
 
   if (targetEl.classList.contains("edit-todo")) {
     toggleForms();
-
+    hideToolBar();
     editInput.value = todoTitle;
     oldInputValue = todoTitle;
   }
