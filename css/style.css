@@ -181,5 +181,5 @@ select {
 }
 
 .hide-task {
-  display: none;
+  display: none !important;
 }
