@@ -18,8 +18,15 @@
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
     />
     <!-- Importação via CDN do toastify -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
   </head>
   <body>
     <div class="todo-container">
@@ -60,38 +67,36 @@
           </form>
         </div>
         <div id="filter">
-            <h4>Filtrar:</h4>
-            <select id="filter-select">
-                <option value="all">Todas</option>
-                <option value="done">Feitas</option>
-                <option value="todo">A fazer</option>
-            </select>
+          <h4>Filtrar:</h4>
+          <select id="filter-select">
+            <option value="all">Todas</option>
+            <option value="done">Feitas</option>
+            <option value="todo">A fazer</option>
+          </select>
         </div>
       </div>
       <div id="todo-list">
         <div class="todo done">
-            <h3>Fazer compras</h3>
-            <button class="finish-todo">
-                <i class="ph ph-checks"></i>
-            </button>
-            <button class="edit-todo">
-                <i class="ph ph-pen"></i>
-            </button>
-            <button class="remove-todo">
-                <i class="ph ph-x"></i>
-            </button>
+          <button class="finish-todo">
+            <i class="ph ph-checks"></i>
+          </button>
+          <button class="edit-todo">
+            <i class="ph ph-pen"></i>
+          </button>
+          <button class="remove-todo">
+            <i class="ph ph-x"></i>
+          </button>
         </div>
         <div class="todo">
-            <h3>Estudar JS</h3>
-            <button class="finish-todo">
-                <i class="ph ph-checks"></i>
-            </button>
-            <button class="edit-todo">
-                <i class="ph ph-pen"></i>
-            </button>
-            <button class="remove-todo">
-                <i class="ph ph-x"></i>
-            </button>
+          <button class="finish-todo">
+            <i class="ph ph-checks"></i>
+          </button>
+          <button class="edit-todo">
+            <i class="ph ph-pen"></i>
+          </button>
+          <button class="remove-todo">
+            <i class="ph ph-x"></i>
+          </button>
         </div>
       </div>
     </div>
