@@ -11,7 +11,7 @@ Este é um projeto simples e funcional de **Lista de Tarefas (To-Do List)** dese
 - 🔍 Pesquisar tarefas por texto
 - 📂 Filtrar por: todas | feitas | a fazer
 - 💾 Interface responsiva e estilizada com Phosphor Icons
-- 🗃️ Salvar no localStorage (⏳ Loading...)
+- 🗃️ Salvar no localStorage
 
 ## 📁 Estrutura do Projeto
 
