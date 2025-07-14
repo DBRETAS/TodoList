@@ -34,10 +34,36 @@ const showToast = (message, type = "success") => {
   }).showToast();
 };
 
+//Salva as tarefas no LocalStorage
+const salvarTarefas = () => {
+  const tarefas = [];
+  const todasTarefas = document.querySelectorAll(".todo");
+
+  todasTarefas.forEach((todo) => {
+    const titulo = todo.querySelector("h3").innerText;
+    const concluida = todo.classList.contains("done");
+    tarefas.push({ titulo, concluida });
+  });
+
+  localStorage.setItem("tarefas", JSON.stringify(tarefas));
+};
+
+const carregarTarefas = () => {
+  todoList.innerHTML = "";
+  const tarefasSalvas = JSON.parse(localStorage.getItem("tarefas")) || [];
+  tarefasSalvas.forEach((tarefa) => {
+    saveTodo(tarefa.titulo, tarefa.concluida);
+  });
+};
+
 //Função que cria e adiciona as tarefas digitadas pelo usuario
-const saveTodo = (text) => {
+const saveTodo = (text, concluida = false) => {
   const todo = document.createElement("div");
   todo.classList.add("todo");
+
+  if (concluida) {
+    todo.classList.add("done");
+  }
 
   const todoTitle = document.createElement("h3");
   todoTitle.innerText = text;
@@ -65,6 +91,8 @@ const saveTodo = (text) => {
 
   // chama a função de toast na hora certa
   showToast("Tarefa adicionada com sucesso!", "success");
+
+  salvarTarefas();
 };
 
 //Função que esconde editForm, todoForm, todoList com CSS.
@@ -88,6 +116,7 @@ const updateTodo = (text) => {
 
   // chama a função de toast na hora certa.
   showToast("Tarefa editada com sucesso!", "info");
+  salvarTarefas();
 };
 
 //Função que filtra as tarefas
@@ -140,10 +169,10 @@ const hideToolBar = () => {
   toolBar.classList.add("hide-toolbar");
 };
 
-//função que remove a classe 
-const removeHideToolBar = ()  =>{
+//função que remove a classe
+const removeHideToolBar = () => {
   toolBar.classList.remove("hide-toolbar");
-}
+};
 
 //Eventos
 
@@ -175,6 +204,7 @@ document.addEventListener("click", (e) => {
 
   if (targetEl.classList.contains("finish-todo")) {
     parentEl.classList.toggle("done");
+    salvarTarefas();
     const isDone = parentEl.classList.contains("done");
     // chama a função de toast na hora certa.
     showToast(isDone ? "Tarefa concluída!" : "Tarefa reaberta!", "success");
@@ -182,6 +212,7 @@ document.addEventListener("click", (e) => {
 
   if (targetEl.classList.contains("remove-todo")) {
     parentEl.remove();
+    salvarTarefas();
     // chama a função de toast na hora certa.
     showToast("Tarefa removida!", "error");
   }
@@ -224,3 +255,5 @@ eraseButton.addEventListener("click", (e) => {
   searchInput.value = "";
   pesquisar();
 });
+
+carregarTarefas();
