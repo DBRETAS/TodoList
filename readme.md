@@ -33,7 +33,7 @@ Este é um projeto simples e funcional de **Lista de Tarefas (To-Do List)** dese
 
 - [Phosphor Icons](https://phosphoricons.com/) (para os ícones dos botões)
 
-🙋‍♂️ Autor |
+## 🙋‍♂️ Autor |
 Feito por Davi Bretas
 
 ![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) davibretascarvalho11@gmail.com
